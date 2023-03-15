@@ -32,19 +32,19 @@ public class RestaurantService {
     public List<Restaurant> matchBestRestaurants(Restaurant restaurantQuery) {
         List<Restaurant> matchingRestaurants = loadRestaurantsFromFile(fileProperties.getRestaurants());
 
-        if(restaurantQuery.getName() != null) {
+        if(restaurantQuery.getName() != null && !restaurantQuery.getName().isEmpty()) {
             matchingRestaurants = getAllWithSimilarName(matchingRestaurants, restaurantQuery.getName().get());
         }
-        if(restaurantQuery.getDistance() != null) {
+        if(restaurantQuery.getDistance() != null && !restaurantQuery.getDistance().isEmpty()) {
             matchingRestaurants = getAllWithSimilarOrLowerDistance(matchingRestaurants, restaurantQuery.getDistance().get());
         }
-        if(restaurantQuery.getCustomerRating() != null) {
+        if(restaurantQuery.getCustomerRating() != null && !restaurantQuery.getCustomerRating().isEmpty()) {
             matchingRestaurants = getAllWithSimilarOrHigherRating(matchingRestaurants, restaurantQuery.getCustomerRating().get());
         }
-        if(restaurantQuery.getPrice() != null) {
+        if(restaurantQuery.getPrice() != null && !restaurantQuery.getPrice().isEmpty()) {
             matchingRestaurants = getAllWithSimilarOrLowerPrice(matchingRestaurants, restaurantQuery.getPrice().get());
         }
-        if(restaurantQuery.getCuisineId() != null) {
+        if(restaurantQuery.getCuisineId() != null && !restaurantQuery.getCuisineId().isEmpty()) {
             matchingRestaurants = getAllWithSameCuisine(matchingRestaurants, restaurantQuery.getCuisineId().get());
         }
         // Sort list to correct priorities after best matches are found
