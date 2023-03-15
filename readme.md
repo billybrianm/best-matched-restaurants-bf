@@ -11,6 +11,7 @@ Best used alongside the [frontend counterpart](https://github.com/billybrianm/be
 ## Requirements
 - Java 17
 - Maven
+- Docker (optional)
 
 ## Building
 ```mvn clean install```
